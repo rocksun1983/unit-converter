@@ -1,14 +1,14 @@
 import { readConversionData } from './fileHandler.js';
 
-// Load the data from your JSON file
+// Load the data from the conversion.json file
 const conversionList = readConversionData();
 
 /**
- * Main conversion function
- * @param {number} inputValue - The value from index.html
- * @param {string} conversionType - The type (e.g., 'kmToMiles', 'cToF')
+ * @param {number} inputValue - variable for the value from index.html
+ * @param {string} conversionType - The type of conversion to be done (e.g., 'kmToMiles', 'cToF')
  * @returns {number|string} The converted value or an error message
  */
+
 export function convertValue(inputValue, conversionType) {
     // 1. Check if the specific value exists in your conversions.json list (optional validation)
     const knownValue = conversionList.find(item => 
