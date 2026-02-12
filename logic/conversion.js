@@ -1,4 +1,4 @@
-import { readConversionData } from './fileHandler.js';
+import { readConversionData } from './utils/fileHandler.js';
 
 // Load the data from the conversion.json file
 const conversionList = readConversionData();
