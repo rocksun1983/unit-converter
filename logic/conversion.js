@@ -31,12 +31,12 @@ const conversionList = [
  */
 
 export function convertValue(inputValue, conversionType) {
-    // 1. Check if the specific value exists in your conversions.json list (optional validation)
+    // 1. Checks if the specific value exists in our conversions.json list
     const knownValue = conversionList.find(item => 
         item.type === conversionType && item.value === inputValue
     );
 
-    // 2. Perform the actual calculation based on the type
+    // 2. Performs the actual calculation based on the conversion type
     let result;
 
     switch (conversionType) {
