@@ -1,3 +1,4 @@
+// module which connects to the frontend
 import { convertValue } from "./logic/conversion.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,5 +24,5 @@ document.addEventListener("DOMContentLoaded", () => {
     resultDisplay.textContent =
       `${value} = ${result}`;
   });
-
+  
 });
