@@ -19,6 +19,8 @@ Whoever worked on this module should please add a description
 This module fetches data from the index.html and fileHandler.js files (which in itself fetches data from the conversion.json file) and applies arithmetic logic to carry out the conversion calculations.
 - index.html
 The is the frontend part of the project. That is, the user facing part where they can input values and carrying out the unit conversion.
+- main.js
+This is the module which links the data part (conversion.js) to the frontend part of the project (index.html), ensuring functionality.
 
 
 
