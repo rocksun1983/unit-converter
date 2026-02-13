@@ -1,5 +1,5 @@
 import express from "express";
-import { convertValue } from "./logic/conversion.js";
+import { convertValue } from "./logic/conversions.js";
 import { readConversionData } from "./utils/fileHandler.js";
 
 const app = express();
@@ -15,7 +15,7 @@ app.get("/convert", (req, res) => {
         return res.status(400).json({ error: "Invalid input" });
     }
 
-    // Read JSON (just to satisfy fs requirement)
+    // Read JSON ( to satisfy fs requirement)
     const data = readConversionData();
     console.log(`Loaded ${data.length} sample conversions`);
 
@@ -35,3 +35,4 @@ app.get("/convert", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
