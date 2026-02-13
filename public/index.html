@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Unit Converter</title>
+</head>
+<body>
+
+    <div style="display: flex; 
+    flex-direction: column; 
+    height: 50vh; width: 50vh; 
+    border: 2px solid; 
+    justify-content: center; align-items: center; 
+    margin-left: 20%; margin-top: 10%;">
+
+        <h1>UNIT CONVERTER</h1>
+
+        <label>
+            Value:
+           <input id="value" type="number" />
+        </label>
+        
+        <br><br>
+
+        <div>
+            <label>
+            Current Unit:
+            <select id="target-unit">
+                <option value="kmToMiles">Kilometers to Miles</option>
+                <option value="milesToKm">Miles to Kilometers</option>
+                <option value="cToF">Celsius to Fahrenheit</option>
+                <option value="fToC">Fahrenheit to Celsius</option>
+                <option value="kgToLb">Kilograms to Pounds</option>
+                <option value="lbToKg">Pounds to Kilograms</option>
+            </select>
+            </label>
+
+        </div>
+
+        <br><br>
+
+        <div style="display: flex; flex-direction: column; 
+        justify-content: center; align-items: center; 
+        width: 80%;">
+        <button id="convert" 
+        style="background-color: black; color: white; 
+        cursor: pointer;">
+            Convert
+        </button>
+
+        <h2 style="text-align: left; width: 100%;"> 
+            Result: <span id="result">-</span> </h2>
+        </div>
+        
+        
+        <script type="module" src="./main.js"></script>
+
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>
