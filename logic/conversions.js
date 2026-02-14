@@ -1,28 +1,12 @@
 
-// Embedded conversion data
-const conversionList = [
-  { "type": "kmToMiles", "value": 1 },
-  { "type": "kmToMiles", "value": 5 },
-  { "type": "kmToMiles", "value": 10 },
-  { "type": "milesToKm", "value": 1 },
-  { "type": "milesToKm", "value": 3 },
-  { "type": "milesToKm", "value": 7 },
-  { "type": "cToF", "value": 0 },
-  { "type": "cToF", "value": 25 },
-  { "type": "cToF", "value": 100 },
-  { "type": "fToC", "value": 32 },
-  { "type": "fToC", "value": 77 },
-  { "type": "fToC", "value": 212 },
-  { "type": "kgToLb", "value": 1 },
-  { "type": "kgToLb", "value": 5 },
-  { "type": "kgToLb", "value": 10 },
-  { "type": "lbToKg", "value": 1 },
-  { "type": "lbToKg", "value": 5 },
-  { "type": "lbToKg", "value": 10 },
-  { "type": "kmToMiles", "value": 42 },
-  { "type": "cToF", "value": -10 },
-  { "type": "kgToLb", "value": 70 }
-];
+
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const dataPath = path.join(__dirname, "../data/conversions.json");
 
 /**
  * @param {number} inputValue - variable for the value from index.html
@@ -31,12 +15,7 @@ const conversionList = [
  */
 
 export function convertValue(inputValue, conversionType) {
-    // 1. Checks if the specific value exists in our conversions.json list
-    const knownValue = conversionList.find(item => 
-        item.type === conversionType && item.value === inputValue
-    );
-
-    // 2. Performs the actual calculation based on the conversion type
+    // Performs the actual calculation based on the conversion type
     let result;
 
     switch (conversionType) {
@@ -59,8 +38,30 @@ export function convertValue(inputValue, conversionType) {
             result = inputValue / 2.20462;
             break;
         default:
-            return "Unsupported conversion type";
+                        return null;
     }
 
     return parseFloat(result.toFixed(2));
+}
+
+export async function fetchConversionList() {
+    if (typeof fetch === "function") {
+        try {
+            const url = new URL("../data/conversions.json", import.meta.url).href;
+            const res = await fetch(url);
+            if (res.ok) {
+                return await res.json();
+            }
+        } catch (e) {
+
+        }
+    }
+
+    try {
+        const raw = fs.readFileSync(dataPath, "utf-8");
+        return JSON.parse(raw);
+    } catch (err) {
+        console.error("Error loading conversions.json:", err);
+        return [];
+    }
 }
